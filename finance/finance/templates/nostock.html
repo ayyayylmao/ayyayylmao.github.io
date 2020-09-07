@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}
+    Error, No Stock
+{% endblock %}
+{% block main %}
+
+    <h1 id="nostock">Sorry, ({{ ticker }}) is an invalid symbol!</h1>
+     <form action="/buy" method="post">
+        <div class="form-group">
+        <input id="symbol" autocomplete="off" autofocus class="form-control" name="symbol" type="text" placeholder="Symbol">
+        </div>
+       
+        <button id="submit" class="btn btn-primary" type="submit" disabled>Quote</button>
+     </form>   
+    
+    <script>
+        document.querySelector('#symbol').onkeyup = function(){
+            if (document.querySelector('#symbol').value ===''){
+                document.querySelector('#submit').disabled = true;
+            } else {
+                document.querySelector('#submit').disabled = false;
+            }
+        }
+    </script>
+{% endblock %}

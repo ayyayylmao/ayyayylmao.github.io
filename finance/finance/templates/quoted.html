@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}
+    Stock Quote
+{% endblock %}
+{% block main %}
+
+    1 share of {{ name }} ({{ symbol }}) costs {{ price }}
+     <form action="/quoted" method="post">
+        <div class="form-group">
+        <input id="symbol" autocomplete="off" autofocus class="form-control" name="symbol" type="text" placeholder="Symbol">
+        </div>
+       
+        <button id="submit" class="btn btn-primary" type="submit" disabled>Quote</button>
+     </form>   
+    
+    <script>
+        document.querySelector('#symbol').onkeyup = function(){
+            if (document.querySelector('#symbol').value ===''){
+                document.querySelector('#submit').disabled = true;
+            } else {
+                document.querySelector('#submit').disabled = false;
+            }
+        }
+    </script>
+{% endblock %}
